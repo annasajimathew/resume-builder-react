@@ -198,7 +198,7 @@ console.log(resumeDetails);
       try{
         const result = await addResumeAPI(resumeDetails)
         console.log(result);
-        if(result.status==201){  //this is success
+        if(result.status == 201){  //this is success
           alert("Resume added successfully!!!")
           const {id} = result.data // destructuring id from result's data (id will be in data - axios library)
           //if success - redirect to view page 
