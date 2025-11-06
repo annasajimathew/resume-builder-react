@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TextField } from '@mui/material';
 import { FaXmark } from "react-icons/fa6";
+import { addResumeAPI } from '../services/allAPI';
+import { useNavigate } from 'react-router-dom';
 
 const steps = ['Basic Informations', 'Contact Details', 'Education Details', 'Work Experience','Skills & Certifications','Review & Submit'];
 
@@ -39,6 +41,8 @@ function UserInput({resumeDetails,setResumeDetails}) {
 //reference to skill input tag
 const skillRef = React.useRef()
 
+//to navigate
+const navigate = useNavigate()
 console.log(resumeDetails);
 
   const isStepOptional = (step) => {
@@ -183,6 +187,33 @@ console.log(resumeDetails);
         default : return null
      }
   }
+  
+  const handleAddResume = async ()=>{
+    const {username,jobTitle,location} = resumeDetails //destructuring
+    if(!username && !jobTitle && !location){
+      alert("please fill the form completely")
+    }else{
+      //api
+      console.log("API Call");
+      try{
+        const result = await addResumeAPI(resumeDetails)
+        console.log(result);
+        if(result.status==201){  //this is success
+          alert("Resume added successfully!!!")
+          const {id} = result.data // destructuring id from result's data (id will be in data - axios library)
+          //if success - redirect to view page 
+          navigate(`/resume/${id}/view`)
+        } 
+        
+      }catch(error){
+        console.log(error);
+        
+      }
+     
+    }
+    
+  }
+  
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -237,9 +268,13 @@ console.log(resumeDetails);
                 Skip
               </Button>
             )}
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
+              {
+                activeStep === steps.length - 1 ?<Button onClick={handleAddResume}>Finish</Button>
+                :
+                <Button onClick={handleNext}>Next</Button>
+                 
+              }
+               
           </Box>
         </React.Fragment>
       )}
