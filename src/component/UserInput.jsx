@@ -168,7 +168,7 @@ console.log(resumeDetails);
                  {
                   resumeDetails.userSkill?.length>0?
                     resumeDetails.userSkill?.map((skill,index)=>(
-                       <Button variant="contained" className='m-1'>{skill}<FaXmark onClick={()=>removeSkill(skill)} className='ms-2' /></Button>
+                       <Button key={index} variant="contained" className='m-1'>{skill}<FaXmark onClick={()=>removeSkill(skill)} className='ms-2' /></Button>
                     ))
                   :
                   <p className='fw-bolder'>NO Skills are added yet!!!</p> 
