@@ -9,9 +9,9 @@ function Preview({resumeDetails}) {
       <h5>{resumeDetails?.jobTitle}</h5>
       <h6><span className='mx-2'>{resumeDetails?.location}</span>|<span className='mx-2'>{resumeDetails?.email}</span>|<span className='mx-2'>{resumeDetails?.mobile}</span></h6>
       <p className='my-2'>
-        <a href="" target='_blank' className='mx-1'>{resumeDetails?.github}</a> |
-        <a href="" target='_blank' className='mx-1'>{resumeDetails?.linkedin}</a> |
-        <a href="" target='_blank' className='mx-1'>{resumeDetails?.portfolio}</a>
+        <a href={resumeDetails?.github} target='_blank' className='mx-1'>GITHUB</a> |
+        <a href={resumeDetails?.linkedin} target='_blank' className='mx-1'>LINKEDIN</a> |
+        <a href={resumeDetails?.portfolio} target='_blank' className='mx-1'>PORTFOLIO</a>
       </p>
       <Divider sx={{fontSize:'25px'}}>Summary</Divider>
       <p style={{textAlign:'justify'}}>{resumeDetails?.summary}</p>

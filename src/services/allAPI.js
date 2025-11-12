@@ -13,10 +13,21 @@ export const getResumeAPI = async (id)=>{
 
 //update resume api
 export const updateResumeAPI = async (id,resume)=>{
-    return await commonAPI(`${serverURL}/resume/${id}`,"PUT",resume)
+    return await commonAPI(`${serverURL}/resume/${id}`,"PUT",resume) //passing resume
 }
 
-
 //add history api
-//get history api
+export const addHistoryAPI = async (history)=>{
+    return await commonAPI(`${serverURL}/history`,"POST",history) 
+}
+
+//get history api - called from history component, when page load(), inside useEffect hook
+export const getHistoryAPI = async ()=>{
+    return await commonAPI(`${serverURL}/history/`,"GET",{})
+}
+
 //remove history api
+export const removeHistoryAPI = async (id)=>{
+    return await commonAPI(`${serverURL}/history/${id}`,"DELETE",{}) 
+}
+

@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 import { FaXmark } from "react-icons/fa6";
+import { updateResumeAPI } from '../services/allAPI';
 
 const style = {
   position: 'absolute',
@@ -41,6 +42,29 @@ function Edit({resumeDetails,setResumeDetails}) {
  const removeSkill = (skill)=>{
   setResumeDetails({...resumeDetails,userSkill:resumeDetails.userSkill.filter(item=>item!=skill)})
  }
+
+ //UPDATE button clicking
+ const handleResumeUpdate = async ()=>{
+  const {id,username,jobTitle,location}=resumeDetails  //desttructuring 
+  if(!username && !jobTitle && !location){
+    alert("Please Fill the Form Completely")
+  }else{
+    //api
+    console.log("Api Call");
+    try{
+      const result = await updateResumeAPI(id,resumeDetails)
+      console.log(result);
+      if(result.status==200){
+        alert("Resume Updated Successfully!!!")
+        handleClose() //to close the modal
+      }
+    }catch(err){
+      console.log(err);
+      
+    }
+    
+  }
+  }
   return (
     <div>
          <button onClick={handleOpen} className='btn fs-3 text-warning'>< MdEditDocument/></button>
@@ -124,7 +148,7 @@ function Edit({resumeDetails,setResumeDetails}) {
 
             {/* button for updation */}
             <div className="my-3">
-                <button className='btn btn-warning text-light '>UPDATE</button>
+                <button onClick={handleResumeUpdate} className='btn btn-warning text-light '>UPDATE</button>
             </div>
           </Box>
         </Box>

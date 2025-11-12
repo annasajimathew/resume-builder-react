@@ -62,7 +62,7 @@ function LandingPage() {
           <div className="col-md-5">
             <div className="row">
               <div className="col-md-3"><img style={{height:'100%',width:'100%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg?w=2000" alt="" /></div>
-              <div className="col-md-3"><img style={{height:'100%',width:'100%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg?w=2000" alt="" /></div>
+              <div className="col-md-3"><img style={{height:'100%',width:'100%'}} src="https://t4.ftcdn.net/jpg/02/90/27/39/360_F_290273933_ukYZjDv8nqgpOBcBUo5CQyFcxAzYlZRW.jpg" alt="" /></div>
               <div className="col-md-3"><img style={{height:'100%',width:'100%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg?w=2000" alt="" /></div>
               <div className="col-md-3"><img style={{height:'100%',width:'100%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg?w=2000" alt="" /></div>
             </div>
